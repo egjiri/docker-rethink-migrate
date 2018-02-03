@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:8.9.4
+FROM egjiri/node:8.9.3
 
 # Get vendor packages
 COPY package.json .
@@ -7,7 +7,7 @@ RUN yarn
 
 # ========== Final Build Stage ==========
 
-FROM mhart/alpine-node:8.9.4
+FROM egjiri/node:8.9.3
 
 # Set arguments
 ARG RETHINK_MIGRATE_VERSION="1.3.1"

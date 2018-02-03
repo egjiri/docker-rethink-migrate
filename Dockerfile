@@ -9,6 +9,9 @@ RUN yarn
 
 FROM mhart/alpine-node:8.9.4
 
+# Set arguments
+ARG RETHINK_MIGRATE_VERSION="1.3.1"
+
 # Set the working directory
 WORKDIR /data
 
@@ -19,7 +22,7 @@ VOLUME /data/rethinkdb
 COPY --from=0 node_modules node_modules
 
 # Install the rethink-migrate binary
-RUN yarn global add rethink-migrate@1.3.1
+RUN yarn global add rethink-migrate@${RETHINK_MIGRATE_VERSION}
 
 # Start the rethink-migrate binrary referencing the config data in the Volume
 ENTRYPOINT ["rethink-migrate", "--root", "rethinkdb"]
